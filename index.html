@@ -3,28 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roast My Password 🔥</title>
+    <title>Keyboard Piano 🎹</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="title">🔥 ROAST MY PASSWORD 🔥</h1>
-        <p class="subtitle">I dare you to use "password123"</p>
+        <h1 class="title">🎹 KEYBOARD PIANO 🎹</h1>
+        <p class="subtitle">Press A S D F G H J K L to play!</p>
         
-        <div class="input-section">
-            <input type="text" id="passwordInput" placeholder="Type your password..." autocomplete="off">
-            <div class="strength-bar">
-                <div class="strength-fill" id="strengthFill"></div>
+        <div class="piano">
+            <div class="key white" data-key="a" data-note="C">
+                <span class="note-name">C</span>
+                <span class="key-label">A</span>
+            </div>
+            <div class="key white" data-key="s" data-note="D">
+                <span class="note-name">D</span>
+                <span class="key-label">S</span>
+            </div>
+            <div class="key white" data-key="d" data-note="E">
+                <span class="note-name">E</span>
+                <span class="key-label">D</span>
+            </div>
+            <div class="key white" data-key="f" data-note="F">
+                <span class="note-name">F</span>
+                <span class="key-label">F</span>
+            </div>
+            <div class="key white" data-key="g" data-note="G">
+                <span class="note-name">G</span>
+                <span class="key-label">G</span>
+            </div>
+            <div class="key white" data-key="h" data-note="A">
+                <span class="note-name">A</span>
+                <span class="key-label">H</span>
+            </div>
+            <div class="key white" data-key="j" data-note="B">
+                <span class="note-name">B</span>
+                <span class="key-label">J</span>
+            </div>
+            <div class="key white" data-key="k" data-note="C2">
+                <span class="note-name">C</span>
+                <span class="key-label">K</span>
+            </div>
+            <div class="key white" data-key="l" data-note="D2">
+                <span class="note-name">D</span>
+                <span class="key-label">L</span>
             </div>
         </div>
-        
-        <div class="result" id="result">
-            <div class="emoji" id="emoji">🤔</div>
-            <div class="roast" id="roast">Type something and watch me roast it...</div>
-            <div class="score" id="score"></div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">Notes Played</div>
+                <div class="stat-value" id="noteCount">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Last Note</div>
+                <div class="stat-value" id="lastNote">-</div>
+            </div>
         </div>
-        
-        <div class="stats" id="stats"></div>
     </div>
     
     <script src="script.js"></script>

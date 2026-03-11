@@ -5,23 +5,20 @@
 }
 
 body {
-    font-family: 'Courier New', monospace;
+    font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 0.5s;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.95);
+    background: white;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     text-align: center;
-    max-width: 600px;
-    width: 90%;
 }
 
 .title {
@@ -32,76 +29,84 @@ body {
 
 .subtitle {
     color: #666;
-    margin-bottom: 30px;
-    font-style: italic;
+    margin-bottom: 40px;
+    font-size: 1.1em;
 }
 
-.input-section {
-    margin: 30px 0;
+.piano {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin-bottom: 40px;
 }
 
-#passwordInput {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.3em;
-    border: 3px solid #ddd;
-    border-radius: 10px;
-    font-family: 'Courier New', monospace;
+.key {
+    width: 70px;
+    height: 250px;
+    background: white;
+    border: 2px solid #333;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    transition: all 0.1s;
+    position: relative;
 }
 
-#passwordInput:focus {
-    outline: none;
-    border-color: #667eea;
+.key:hover {
+    background: #f0f0f0;
+    transform: translateY(-5px);
 }
 
-.strength-bar {
-    width: 100%;
-    height: 10px;
-    background: #e0e0e0;
-    border-radius: 10px;
-    margin-top: 15px;
-    overflow: hidden;
+.key.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transform: translateY(5px);
+    box-shadow: 0 5px 15px rgba(102,126,234,0.5);
 }
 
-.strength-fill {
-    height: 100%;
-    width: 0;
-    transition: width 0.3s;
-    border-radius: 10px;
+.key.active .note-name,
+.key.active .key-label {
+    color: white;
 }
 
-.result {
-    margin: 30px 0;
-    padding: 30px;
-    background: #f8f9fa;
-    border-radius: 15px;
-    min-height: 200px;
-}
-
-.emoji {
-    font-size: 5em;
-    margin-bottom: 20px;
-}
-
-.roast {
-    font-size: 1.4em;
-    color: #333;
-    font-weight: bold;
-    margin: 20px 0;
-    line-height: 1.5;
-}
-
-.score {
+.note-name {
     font-size: 1.2em;
-    color: #666;
-    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.key-label {
+    font-size: 0.9em;
+    color: #999;
+    background: #f5f5f5;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .stats {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f0f0f0;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.stat-box {
+    background: #f8f9fa;
+    padding: 20px 30px;
     border-radius: 10px;
+    min-width: 150px;
+}
+
+.stat-label {
     color: #666;
     font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    color: #667eea;
+    font-size: 2em;
+    font-weight: bold;
 }
