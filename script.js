@@ -1,68 +1,113 @@
-const keys = document.querySelectorAll('.key');
-const noteCount = document.getElementById('noteCount');
-const lastNote = document.getElementById('lastNote');
+// ── DOM references ────────────────────────────────────────
+const allKeyElements  = document.querySelectorAll('.key');
+const noteCountEl     = document.getElementById('noteCount');
+const lastNoteEl      = document.getElementById('lastNote');
+const resetBtn        = document.getElementById('resetBtn');
 
-let count = 0;
+// ── State ─────────────────────────────────────────────────
+let totalNotesPlayed = 0;
 
-const notes = {
-    'a': 261.63,
-    's': 293.66,
-    'd': 329.63,
-    'f': 349.23,
-    'g': 392.00,
-    'h': 440.00,
-    'j': 493.88,
-    'k': 523.25,
-    'l': 587.33
+// ── Key → frequency map (Hz) ──────────────────────────────
+// Each keyboard letter maps to a piano note frequency.
+const keyFrequencyMap = {
+  a: 261.63,  // C4
+  s: 293.66,  // D4
+  d: 329.63,  // E4
+  f: 349.23,  // F4
+  g: 392.00,  // G4
+  h: 440.00,  // A4
+  j: 493.88,  // B4
+  k: 523.25,  // C5
+  l: 587.33,  // D5
 };
 
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+// ── Audio context (lazy-initialised on first interaction) ──
+// Browsers require a user gesture before allowing audio playback.
+let audioCtx = null;
 
+function getAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  return audioCtx;
+}
+
+// ── Sound synthesis ────────────────────────────────────────
+/**
+ * Plays a single piano-like tone at the given frequency.
+ * Uses a sine-wave oscillator with a quick volume fade-out
+ * to mimic the natural decay of a piano note.
+ *
+ * @param {number} frequency - Note frequency in Hz
+ */
 function playNote(frequency) {
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    oscillator.frequency.value = frequency;
-    oscillator.type = 'sine';
-    
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
-    
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 1);
+  const ctx        = getAudioContext();
+  const oscillator = ctx.createOscillator();
+  const gainNode   = ctx.createGain();
+
+  // Route: oscillator → gain → speakers
+  oscillator.connect(gainNode);
+  gainNode.connect(ctx.destination);
+
+  oscillator.type            = 'sine';
+  oscillator.frequency.value = frequency;
+
+  // Start at moderate volume, then fade to silence over 1 second
+  gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1);
+
+  oscillator.start(ctx.currentTime);
+  oscillator.stop(ctx.currentTime + 1);
 }
 
-function activateKey(key) {
-    const keyElement = document.querySelector(`[data-key="${key}"]`);
-    if(!keyElement) return;
-    
-    keyElement.classList.add('active');
-    setTimeout(() => {
-        keyElement.classList.remove('active');
-    }, 200);
-    
-    const frequency = notes[key];
-    if(frequency) {
-        playNote(frequency);
-        count++;
-        noteCount.textContent = count;
-        lastNote.textContent = keyElement.dataset.note;
-    }
+// ── Key activation ─────────────────────────────────────────
+/**
+ * Visually activates a piano key, plays its note,
+ * and updates the on-screen stats.
+ *
+ * @param {string} keyLetter - Single lowercase letter (e.g. "a")
+ */
+function activateKey(keyLetter) {
+  const keyElement = document.querySelector(`[data-key="${keyLetter}"]`);
+  if (!keyElement) return;
+
+  // Highlight the key for 200 ms
+  keyElement.classList.add('active');
+  setTimeout(() => keyElement.classList.remove('active'), 200);
+
+  const frequency = keyFrequencyMap[keyLetter];
+  if (!frequency) return;
+
+  // Play the note and update stats
+  playNote(frequency);
+  totalNotesPlayed++;
+  noteCountEl.textContent = totalNotesPlayed;
+  lastNoteEl.textContent  = keyElement.dataset.note;
 }
 
-document.addEventListener('keydown', (e) => {
-    const key = e.key.toLowerCase();
-    if(notes[key]) {
-        activateKey(key);
-    }
+// ── Reset stats ────────────────────────────────────────────
+function resetStats() {
+  totalNotesPlayed        = 0;
+  noteCountEl.textContent = 0;
+  lastNoteEl.textContent  = '—';
+}
+
+// ── Event listeners ────────────────────────────────────────
+
+// Physical keyboard input
+document.addEventListener('keydown', (event) => {
+  const pressedKey = event.key.toLowerCase();
+  if (keyFrequencyMap[pressedKey]) {
+    activateKey(pressedKey);
+  }
 });
 
-keys.forEach(key => {
-    key.addEventListener('click', () => {
-        const keyLetter = key.dataset.key;
-        activateKey(keyLetter);
-    });
+// Mouse / touch click on each piano key
+allKeyElements.forEach((keyEl) => {
+  keyEl.addEventListener('click', () => {
+    activateKey(keyEl.dataset.key);
+  });
 });
+
+// Reset button
+resetBtn.addEventListener('click', resetStats);

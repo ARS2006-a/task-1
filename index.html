@@ -1,67 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keyboard Piano 🎹</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyboard Piano 🎹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">🎹 KEYBOARD PIANO 🎹</h1>
-        <p class="subtitle">Press A S D F G H J K L to play!</p>
-        
-        <div class="piano">
-            <div class="key white" data-key="a" data-note="C">
-                <span class="note-name">C</span>
-                <span class="key-label">A</span>
-            </div>
-            <div class="key white" data-key="s" data-note="D">
-                <span class="note-name">D</span>
-                <span class="key-label">S</span>
-            </div>
-            <div class="key white" data-key="d" data-note="E">
-                <span class="note-name">E</span>
-                <span class="key-label">D</span>
-            </div>
-            <div class="key white" data-key="f" data-note="F">
-                <span class="note-name">F</span>
-                <span class="key-label">F</span>
-            </div>
-            <div class="key white" data-key="g" data-note="G">
-                <span class="note-name">G</span>
-                <span class="key-label">G</span>
-            </div>
-            <div class="key white" data-key="h" data-note="A">
-                <span class="note-name">A</span>
-                <span class="key-label">H</span>
-            </div>
-            <div class="key white" data-key="j" data-note="B">
-                <span class="note-name">B</span>
-                <span class="key-label">J</span>
-            </div>
-            <div class="key white" data-key="k" data-note="C2">
-                <span class="note-name">C</span>
-                <span class="key-label">K</span>
-            </div>
-            <div class="key white" data-key="l" data-note="D2">
-                <span class="note-name">D</span>
-                <span class="key-label">L</span>
-            </div>
+
+  <!-- ── Navbar ─────────────────────────────────────────── -->
+  <header class="navbar">
+    <span class="navbar-logo">🎹 Keyboard Piano</span>
+    <nav class="navbar-links">
+      <a href="https://github.com/ARS2006-a/task-1" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <!-- ── Main content ───────────────────────────────────── -->
+  <main class="page-wrapper">
+    <div class="card">
+
+      <!-- Title -->
+      <h1 class="title">🎹 Keyboard Piano</h1>
+      <p class="subtitle">Press <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd> <kbd>G</kbd> <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> — or click the keys below</p>
+
+      <!-- Piano keys -->
+      <section class="piano" aria-label="Piano keyboard">
+
+        <div class="key white" data-key="a" data-note="C" role="button" tabindex="0" aria-label="C note, press A">
+          <span class="note-name">C</span>
+          <span class="key-label">A</span>
         </div>
 
-        <div class="stats">
-            <div class="stat-box">
-                <div class="stat-label">Notes Played</div>
-                <div class="stat-value" id="noteCount">0</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-label">Last Note</div>
-                <div class="stat-value" id="lastNote">-</div>
-            </div>
+        <div class="key white" data-key="s" data-note="D" role="button" tabindex="0" aria-label="D note, press S">
+          <span class="note-name">D</span>
+          <span class="key-label">S</span>
         </div>
+
+        <div class="key white" data-key="d" data-note="E" role="button" tabindex="0" aria-label="E note, press D">
+          <span class="note-name">E</span>
+          <span class="key-label">D</span>
+        </div>
+
+        <div class="key white" data-key="f" data-note="F" role="button" tabindex="0" aria-label="F note, press F">
+          <span class="note-name">F</span>
+          <span class="key-label">F</span>
+        </div>
+
+        <div class="key white" data-key="g" data-note="G" role="button" tabindex="0" aria-label="G note, press G">
+          <span class="note-name">G</span>
+          <span class="key-label">G</span>
+        </div>
+
+        <div class="key white" data-key="h" data-note="A" role="button" tabindex="0" aria-label="A note, press H">
+          <span class="note-name">A</span>
+          <span class="key-label">H</span>
+        </div>
+
+        <div class="key white" data-key="j" data-note="B" role="button" tabindex="0" aria-label="B note, press J">
+          <span class="note-name">B</span>
+          <span class="key-label">J</span>
+        </div>
+
+        <div class="key white" data-key="k" data-note="C2" role="button" tabindex="0" aria-label="High C note, press K">
+          <span class="note-name">C</span>
+          <span class="key-label">K</span>
+        </div>
+
+        <div class="key white" data-key="l" data-note="D2" role="button" tabindex="0" aria-label="High D note, press L">
+          <span class="note-name">D</span>
+          <span class="key-label">L</span>
+        </div>
+
+      </section>
+
+      <!-- Stats + Reset -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">Notes Played</div>
+          <div class="stat-value" id="noteCount">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Last Note</div>
+          <div class="stat-value" id="lastNote">—</div>
+        </div>
+      </div>
+
+      <button class="reset-btn" id="resetBtn" aria-label="Reset stats">Reset Stats</button>
+
     </div>
-    
-    <script src="script.js"></script>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>

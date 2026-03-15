@@ -1,112 +1,114 @@
 # 🎹 Keyboard Piano
 
-Transform your keyboard into a musical piano! Press keys to play beautiful piano notes instantly.
+> Transform your computer keyboard into a fully playable musical instrument — right in the browser.
 
-## 🎯 Project Idea
+---
 
-Most people never realize their keyboard can be more than just typing. **Keyboard Piano** turns your regular computer keyboard into a playable musical instrument. It's creative, fun, and instantly engaging - just press keys and make music!
+## 📖 Project Description
 
-The concept is inspired by how everyday tools can become something completely different with a bit of creativity. Your keyboard becomes a piano, making music accessible to everyone.
+**Keyboard Piano** is a browser-based interactive piano that maps your keyboard keys to real piano notes. Using the Web Audio API, it generates authentic piano tones in real time with zero dependencies. Press a key, hear a note, watch the key light up — it's that simple.
+
+---
 
 ## ✨ Features
 
-- 🎵 **9 Piano Keys** - Press A S D F G H J K L to play notes C D E F G A B C D
-- 🎨 **Visual Feedback** - Keys light up with beautiful colors when pressed
-- 🔊 **Real Piano Sounds** - Authentic piano notes generated in real-time
-- 🖱️ **Click to Play** - Use mouse or keyboard to play
-- 📊 **Note Counter** - Tracks how many notes you've played
-- 🎼 **Last Note Display** - Shows which note you just played
-- ⚡ **Instant Response** - Zero delay between press and sound
-- 📱 **Responsive Design** - Works on all devices
+- 🎵 **9 Playable Keys** — A S D F G H J K L mapped to notes C D E F G A B C D
+- 🔊 **Real-Time Sound** — Tones generated via the Web Audio API (no audio files needed)
+- 🎨 **Visual Feedback** — Keys animate and highlight on press or click
+- 🖱️ **Mouse & Keyboard Support** — Play with clicks or keystrokes
+- 📊 **Live Stats** — Tracks total notes played and the last note pressed
+- 🔄 **Reset Button** — Clears stats with one click
+- 📱 **Responsive Design** — Works on desktop, tablet, and mobile
+
+---
 
 ## 🛠️ Technologies Used
 
-- **HTML5** - Structure and layout
-- **CSS3** - Styling, animations, visual effects
-- **JavaScript (Vanilla)** - Keyboard input handling, sound generation using Web Audio API
-- **Web Audio API** - Built-in browser API for generating piano sounds
-- **No external libraries** - Pure, lightweight code
+| Technology | Purpose |
+|---|---|
+| HTML5 | Page structure and semantics |
+| CSS3 | Styling, layout, animations |
+| JavaScript (Vanilla) | Piano logic, event handling |
+| Web Audio API | Real-time sound synthesis |
 
-## 🎮 How It Works
+No external libraries or frameworks — pure, lightweight code.
 
-1. Open the website
-2. Press keys A S D F G H J K L on your keyboard
-3. Each key plays a different piano note
-4. Watch the piano keys light up as you play
-5. See your note count increase
-6. Create your own melodies!
+---
 
-**Key Mapping:**
-- A = C (Do)
-- S = D (Re)
-- D = E (Mi)
-- F = F (Fa)
-- G = G (Sol)
-- H = A (La)
-- J = B (Ti)
-- K = C (Do - higher octave)
-- L = D (Re - higher octave)
+## ⚙️ Installation Instructions
 
-## 🚀 How to Run
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ARS2006-a/task-1.git
+   cd task-1
+   ```
 
-### Option 1: Direct Open (Easiest)
-1. Download all files (`index.html`, `style.css`, `script.js`)
-2. Double-click `index.html`
-3. Start playing immediately!
+2. No build step or package installation is required.
 
-### Option 2: Local Server
-1. Download all files
-2. Open terminal in the project folder
-3. Run: `python -m http.server 8000`
-4. Open browser: `http://localhost:8000`
+---
 
-### Option 3: Live Server (VS Code)
-1. Install "Live Server" extension in VS Code
-2. Right-click `index.html`
-3. Select "Open with Live Server"
+## 🚀 How to Run the Project
+
+### Option 1 — Direct Open (Easiest)
+Double-click `index.html` to open it in your browser. Done.
+
+### Option 2 — Python Local Server
+```bash
+python server.py
+```
+Then open [http://localhost:8000](http://localhost:8000) in your browser.
+
+### Option 3 — VS Code Live Server
+1. Install the **Live Server** extension in VS Code
+2. Right-click `index.html` → **Open with Live Server**
+
+---
 
 ## 📂 Project Structure
 
 ```
 keyboard-piano/
-│
-├── index.html      # Main HTML structure
-├── style.css       # Styling and animations
-├── script.js       # Piano logic and sound generation
-└── README.md       # Project documentation
+├── index.html    # Main HTML structure and layout
+├── style.css     # Styling, animations, and responsive design
+├── script.js     # Piano logic and Web Audio API sound generation
+├── server.py     # Simple Python HTTP server for local development
+└── README.md     # Project documentation
 ```
+
+---
+
+## 🔮 Future Improvements
+
+- [ ] Add black (sharp/flat) keys for a full octave
+- [ ] Support multiple octaves
+- [ ] Add a recording and playback feature
+- [ ] Add different instrument sounds (guitar, xylophone, etc.)
+- [ ] Display sheet music or note names as you play
+- [ ] Add a song tutorial / guided play mode
+
+---
+
+## 🤝 Contribution Guidelines
+
+Contributions are welcome! To contribute:
+
+1. **Fork** this repository
+2. **Create a branch** for your feature: `git checkout -b feature/your-feature-name`
+3. **Commit** your changes with a clear message: `git commit -m "Add: description of change"`
+4. **Push** to your fork: `git push origin feature/your-feature-name`
+5. **Open a Pull Request** describing what you changed and why
+
+Please keep changes beginner-friendly, avoid breaking existing functionality, and follow the existing code style.
+
+---
 
 ## 🎵 Try Playing These Songs
 
-**Twinkle Twinkle Little Star:**
-- A A G G H H G (Twinkle twinkle little star)
-
-**Mary Had a Little Lamb:**
-- D S A S D D D (Mary had a little lamb)
-
-**Hot Cross Buns:**
-- D S A D S A (Hot cross buns)
-
-## 🌟 Why This Project?
-
-- **Creative & Unique** - Turns your keyboard into a musical instrument
-- **Instantly Fun** - No learning curve, just press and play
-- **Educational** - Learn basic music notes and melodies
-- **Beginner-Friendly** - Clean, simple code structure
-- **Interactive** - Immediate visual and audio feedback
-- **Accessible** - Everyone can make music, no piano needed!
-
-## 🤝 Contributing
-
-Feel free to fork this project and add more features like:
-- More octaves
-- Different instruments
-- Recording functionality
-- Sheet music display
-
-## 📝 License
-
-Free to use for educational purposes.
+| Song | Keys |
+|---|---|
+| Twinkle Twinkle Little Star | A A G G H H G |
+| Mary Had a Little Lamb | D S A S D D D |
+| Hot Cross Buns | D S A D S A |
 
 ---
 
