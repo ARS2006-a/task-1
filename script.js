@@ -5,15 +5,21 @@ const lastNote = document.getElementById('lastNote');
 let count = 0;
 
 const notes = {
-    'a': 261.63,
-    's': 293.66,
-    'd': 329.63,
-    'f': 349.23,
-    'g': 392.00,
-    'h': 440.00,
-    'j': 493.88,
-    'k': 523.25,
-    'l': 587.33
+    'a': 261.63, // C
+    'w': 277.18, // C#
+    's': 293.66, // D
+    'e': 311.13, // D#
+    'd': 329.63, // E
+    'f': 349.23, // F
+    't': 369.99, // F#
+    'g': 392.00, // G
+    'y': 415.30, // G#
+    'h': 440.00, // A
+    'u': 466.16, // A#
+    'j': 493.88, // B
+    'k': 523.25, // C2
+    'o': 554.37, // C#2
+    'l': 587.33  // D2
 };
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();

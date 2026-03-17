@@ -61,15 +61,42 @@ body {
     transform: translateY(-5px);
 }
 
-.key.active {
+.key.white.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     transform: translateY(5px);
     box-shadow: 0 5px 15px rgba(102,126,234,0.5);
 }
 
-.key.active .note-name,
-.key.active .key-label {
+.key.black {
+    width: 45px;
+    height: 150px;
+    background: #333;
     color: white;
+    margin-left: -22.5px;
+    margin-right: -22.5px;
+    z-index: 2;
+    border-radius: 0 0 5px 5px;
+}
+
+.key.black:hover {
+    background: #444;
+}
+
+.key.black.active {
+    background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+    transform: translateY(2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+.key.white.active .note-name,
+.key.white.active .key-label,
+.key.black .note-name,
+.key.black .key-label {
+    color: white;
+}
+
+.key.black .key-label {
+    background: #444;
 }
 
 .note-name {
